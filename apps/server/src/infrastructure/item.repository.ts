@@ -19,6 +19,8 @@ export class ItemRepository {
     const items = this.data.slice(start, start + first).map((i) => ({
       ...i,
       text: `${keyword}${i.id}`,
+      name: `${keyword}${i.id}`,
+      address: `${keyword}${i.id}`,
     }));
     const hasNextPage = start + first < this.data.length;
     return { items, hasNextPage };
