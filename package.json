@@ -1,5 +1,13 @@
 {
   "name": "graphql-sand",
   "private": true,
-  "workspaces": ["apps/*"]
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  },
+  "scripts": {
+    "prettier": "prettier --write \"apps/**/*.{ts,tsx,js,jsx,json,md}\""
+  }
 }
