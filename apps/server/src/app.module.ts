@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { HelloResolver } from './presentation/hello.resolver';
-import { ItemsResolver } from './presentation/items.resolver';
+import { HelloResolver } from './presentation/hello/hello.resolver';
+import { ItemsResolver } from './presentation/items/items.resolver';
 
 @Module({
   imports: [
