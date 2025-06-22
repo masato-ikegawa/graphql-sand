@@ -1,0 +1,23 @@
+type Item {
+  id: ID!
+  text: String!
+}
+
+type ItemEdge {
+  node: Item!
+  cursor: String!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+}
+
+type ItemConnection {
+  edges: [ItemEdge!]!
+  pageInfo: PageInfo!
+}
+
+type Query {
+  items(first: Int!, after: String): ItemConnection!
+}
