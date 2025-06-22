@@ -1,0 +1,5 @@
+{
+  "name": "graphql-sand",
+  "private": true,
+  "workspaces": ["apps/*"]
+}
