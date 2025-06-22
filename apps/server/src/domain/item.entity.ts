@@ -7,4 +7,10 @@ export class Item {
 
   @Field()
   text!: string;
+
+  @Field()
+  name!: string;
+
+  @Field()
+  address!: string;
 }

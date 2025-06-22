@@ -4,6 +4,8 @@ export class ItemRepository {
   private data: Item[] = Array.from({ length: 50 }, (_, i) => ({
     id: String(i + 1),
     text: `Item ${i + 1}`,
+    name: `Name ${i + 1}`,
+    address: `Address ${i + 1}`,
   }));
 
   fetch(first: number, after: string | undefined, keyword: string) {
