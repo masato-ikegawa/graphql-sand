@@ -1,6 +1,8 @@
 type Item {
   id: ID!
   text: String!
+  name: String!
+  address: String!
 }
 
 type ItemEdge {
