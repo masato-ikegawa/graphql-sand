@@ -29,8 +29,8 @@ export class ItemConnection {
 export class ItemService {
   constructor(private readonly repo: ItemRepository) {}
 
-  getItems(first: number, after?: string): ItemConnection {
-    const { items, hasNextPage } = this.repo.fetch(first, after);
+  getItems(first: number, keyword: string, after?: string): ItemConnection {
+    const { items, hasNextPage } = this.repo.fetch(first, after, keyword);
     const edges = items.map((i) => ({ node: i, cursor: i.id }));
     const endCursor =
       edges.length > 0 ? edges[edges.length - 1].cursor : undefined;

@@ -1,13 +1,14 @@
 import { useQuery } from "@apollo/client";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { InfiniteListPresentation } from "./components";
 import { INFINITE_ITEMS_QUERY } from "../../templates/infiniteList";
 
 const PAGE_SIZE = 10;
 
 export default function InfiniteList() {
+  const [keyword, setKeyword] = useState("item");
   const { data, loading, error, fetchMore } = useQuery(INFINITE_ITEMS_QUERY, {
-    variables: { first: PAGE_SIZE },
+    variables: { first: PAGE_SIZE, keyword },
     notifyOnNetworkStatusChange: true,
   });
 
@@ -24,12 +25,13 @@ export default function InfiniteList() {
         fetchMore({
           variables: {
             first: PAGE_SIZE,
+            keyword,
             after: data.items.pageInfo.endCursor,
           },
         });
       }
     },
-    [data, fetchMore, loading],
+    [data, fetchMore, loading, keyword],
   );
 
   useEffect(() => {
@@ -48,6 +50,11 @@ export default function InfiniteList() {
 
   return (
     <div>
+      <input
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value.slice(0, 5))}
+        placeholder="keyword"
+      />
       <InfiniteListPresentation items={items} />
       {loading && <div>Loading...</div>}
       <div ref={loadMoreRef} />

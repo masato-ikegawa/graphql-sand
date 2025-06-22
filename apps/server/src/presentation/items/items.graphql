@@ -19,5 +19,5 @@ type ItemConnection {
 }
 
 type Query {
-  items(first: Int!, after: String): ItemConnection!
+  items(first: Int!, keyword: String!, after: String): ItemConnection!
 }
