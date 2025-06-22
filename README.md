@@ -5,6 +5,8 @@ This repository contains a basic monorepo with two applications:
 - **web**: a Next.js 14 application using the Pages Router
 - **server**: a NestJS application exposing a simple GraphQL API
 
+Each application has its own README in `apps/web` and `apps/server` with instructions specific to that project.
+
 ## Structure
 
 ```
@@ -27,6 +29,8 @@ npm run --workspace=web dev
 # Start the NestJS server in development mode
 npm run --workspace=server start:dev
 ```
+
+Refer to each app's README in `apps/web` or `apps/server` for detailed workflows.
 
 Each app listens on a different port so you can run them together.
 

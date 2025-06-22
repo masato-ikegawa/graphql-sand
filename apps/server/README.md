@@ -4,10 +4,15 @@ This directory contains the NestJS GraphQL server.
 
 ## Development
 
-Install dependencies and run the server in watch mode:
+Install dependencies with:
 
 ```bash
-npm ci
+npm install
+```
+
+Run the development server:
+
+```bash
 npm run start:dev
 ```
 
@@ -29,3 +34,4 @@ The request/response flow from the GraphQL resolver down to the infrastructure l
 ```
 
 The service converts repository results into the `ItemConnection` type used by the GraphQL API.
+
