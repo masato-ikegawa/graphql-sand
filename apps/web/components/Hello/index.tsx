@@ -1,17 +1,17 @@
-import { useQuery } from '@apollo/client';
-import { HelloPresentation } from './components';
-import { HELLO_QUERY } from '../../templates/hello';
+import { useQuery } from "@apollo/client";
+import { HelloPresentation } from "./components";
+import { HELLO_QUERY } from "../../templates/hello";
 
 export default function HelloContainer() {
   const { data, loading, error } = useQuery(HELLO_QUERY);
 
-  let message = 'Loading...';
+  let message = "Loading...";
   if (loading) {
-    message = 'Loading...';
+    message = "Loading...";
   } else if (error) {
-    message = 'Error fetching data';
+    message = "Error fetching data";
   } else {
-    message = data?.hello ?? 'No data';
+    message = data?.hello ?? "No data";
   }
 
   return <HelloPresentation message={message} />;

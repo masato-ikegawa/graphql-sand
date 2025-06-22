@@ -1,4 +1,4 @@
-import { Item } from '../domain/item.entity';
+import { Item } from "../domain/item.entity";
 
 export class ItemRepository {
   private data: Item[] = Array.from({ length: 50 }, (_, i) => ({

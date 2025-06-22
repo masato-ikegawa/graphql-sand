@@ -1,6 +1,6 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { Item } from '../domain/item.entity';
-import { ItemRepository } from '../infrastructure/item.repository';
+import { Field, ObjectType } from "@nestjs/graphql";
+import { Item } from "../domain/item.entity";
+import { ItemRepository } from "../infrastructure/item.repository";
 
 @ObjectType()
 export class ItemEdge {
@@ -32,7 +32,8 @@ export class ItemService {
   getItems(first: number, after?: string): ItemConnection {
     const { items, hasNextPage } = this.repo.fetch(first, after);
     const edges = items.map((i) => ({ node: i, cursor: i.id }));
-    const endCursor = edges.length > 0 ? edges[edges.length - 1].cursor : undefined;
+    const endCursor =
+      edges.length > 0 ? edges[edges.length - 1].cursor : undefined;
     return { edges, pageInfo: { endCursor, hasNextPage } };
   }
 }

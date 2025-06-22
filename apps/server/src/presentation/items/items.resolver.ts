@@ -1,6 +1,6 @@
-import { Query, Args, Resolver, Int } from '@nestjs/graphql';
-import { ItemConnection } from '../../application/item.service';
-import { createItemService } from '../../application/item.factory';
+import { Query, Args, Resolver, Int } from "@nestjs/graphql";
+import { ItemConnection } from "../../application/item.service";
+import { createItemService } from "../../application/item.factory";
 
 @Resolver()
 export class ItemsResolver {
@@ -8,8 +8,8 @@ export class ItemsResolver {
 
   @Query(() => ItemConnection)
   items(
-    @Args('first', { type: () => Int }) first: number,
-    @Args('after', { nullable: true }) after?: string,
+    @Args("first", { type: () => Int }) first: number,
+    @Args("after", { nullable: true }) after?: string,
   ) {
     return this.service.getItems(first, after);
   }

@@ -34,4 +34,3 @@ The request/response flow from the GraphQL resolver down to the infrastructure l
 ```
 
 The service converts repository results into the `ItemConnection` type used by the GraphQL API.
-
