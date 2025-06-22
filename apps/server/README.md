@@ -4,10 +4,10 @@ This directory contains the NestJS GraphQL server.
 
 ## Development
 
-Install dependencies with:
+Install dependencies from the repository root with:
 
 ```bash
-npm install
+npm ci
 ```
 
 Run the development server:

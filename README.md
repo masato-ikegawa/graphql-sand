@@ -34,6 +34,12 @@ Refer to each app's README in `apps/web` or `apps/server` for detailed workflows
 
 Each app listens on a different port so you can run them together.
 
+### Troubleshooting
+
+If TypeScript reports missing NestJS modules (e.g. `Cannot find module '@nestjs/core'`),
+it usually means dependencies have not been installed yet. Run `npm install` from the
+repository root to install packages for every workspace.
+
 ## Web Conventions
 
 - Components live under `components/` alongside a `utils/` directory.

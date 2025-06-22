@@ -4,17 +4,15 @@ This directory contains the Next.js 14 application.
 
 ## Development
 
-Initially install dependencies with:
+Initially install dependencies from the repository root with:
 
 ```bash
-npm install
+npm ci
 ```
 
 Install dependencies and start the dev server:
 
 ```bash
-npm ci
-
 npm run dev
 ```
 
