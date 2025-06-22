@@ -7,12 +7,22 @@ const PAGE_SIZE = 10;
 
 export default function InfiniteList() {
   const [keyword, setKeyword] = useState("item");
-  const { data, loading, error, fetchMore } = useQuery(INFINITE_ITEMS_QUERY, {
-    variables: { first: PAGE_SIZE, keyword },
-    notifyOnNetworkStatusChange: true,
-  });
+  const [queryKeyword, setQueryKeyword] = useState("item");
+  const { data, loading, error, fetchMore, client } = useQuery(
+    INFINITE_ITEMS_QUERY,
+    {
+      variables: { first: PAGE_SIZE, keyword: queryKeyword },
+      notifyOnNetworkStatusChange: true,
+    },
+  );
 
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+
+  const handleSearch = useCallback(() => {
+    client.cache.evict({ fieldName: "items" });
+    client.cache.gc();
+    setQueryKeyword(keyword);
+  }, [client, keyword]);
 
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
@@ -25,13 +35,13 @@ export default function InfiniteList() {
         fetchMore({
           variables: {
             first: PAGE_SIZE,
-            keyword,
+            keyword: queryKeyword,
             after: data.items.pageInfo.endCursor,
           },
         });
       }
     },
-    [data, fetchMore, loading, keyword],
+    [data, fetchMore, loading, queryKeyword],
   );
 
   useEffect(() => {
@@ -55,6 +65,7 @@ export default function InfiniteList() {
         onChange={(e) => setKeyword(e.target.value.slice(0, 5))}
         placeholder="keyword"
       />
+      <button onClick={handleSearch}>Search</button>
       <InfiniteListPresentation items={items} />
       {loading && <div>Loading...</div>}
       <div ref={loadMoreRef} />
