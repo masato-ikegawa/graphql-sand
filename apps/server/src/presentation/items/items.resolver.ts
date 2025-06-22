@@ -1,6 +1,6 @@
 import { Query, Args, Resolver, Int } from '@nestjs/graphql';
-import { ItemConnection } from '../application/item.service';
-import { createItemService } from '../application/item.factory';
+import { ItemConnection } from '../../application/item.service';
+import { createItemService } from '../../application/item.factory';
 
 @Resolver()
 export class ItemsResolver {
