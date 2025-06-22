@@ -12,6 +12,7 @@ export default function InfiniteList() {
     INFINITE_ITEMS_QUERY,
     {
       variables: { first: PAGE_SIZE, keyword: queryKeyword },
+      fetchPolicy: "cache-first",
       notifyOnNetworkStatusChange: true,
     },
   );
@@ -19,8 +20,6 @@ export default function InfiniteList() {
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   const handleSearch = useCallback(() => {
-    client.cache.evict({ fieldName: "items" });
-    client.cache.gc();
     setQueryKeyword(keyword);
   }, [client, keyword]);
 

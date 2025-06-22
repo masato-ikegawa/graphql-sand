@@ -10,6 +10,9 @@ export const client = new ApolloClient({
           items: relayStylePagination(["keyword"]),
         },
       },
+      Item: {
+        keyFields: false,
+      },
     },
   }),
 });
