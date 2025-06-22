@@ -9,8 +9,9 @@ export class ItemsResolver {
   @Query(() => ItemConnection)
   items(
     @Args("first", { type: () => Int }) first: number,
+    @Args("keyword", { type: () => String }) keyword: string,
     @Args("after", { nullable: true }) after?: string,
   ) {
-    return this.service.getItems(first, after);
+    return this.service.getItems(first, keyword, after);
   }
 }

@@ -6,7 +6,7 @@ export class ItemRepository {
     text: `Item ${i + 1}`,
   }));
 
-  fetch(first: number, after?: string) {
+  fetch(first: number, after: string | undefined, keyword: string) {
     let start = 0;
     if (after) {
       const index = this.data.findIndex((i) => i.id === after);
@@ -14,7 +14,10 @@ export class ItemRepository {
         start = index + 1;
       }
     }
-    const items = this.data.slice(start, start + first);
+    const items = this.data.slice(start, start + first).map((i) => ({
+      ...i,
+      text: `${keyword}${i.id}`,
+    }));
     const hasNextPage = start + first < this.data.length;
     return { items, hasNextPage };
   }
