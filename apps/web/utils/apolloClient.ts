@@ -7,7 +7,7 @@ export const client = new ApolloClient({
     typePolicies: {
       Query: {
         fields: {
-          items: relayStylePagination(),
+          items: relayStylePagination(["keyword"]),
         },
       },
     },
