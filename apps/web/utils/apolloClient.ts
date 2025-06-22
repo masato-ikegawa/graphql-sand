@@ -10,6 +10,8 @@ export const client = new ApolloClient({
           items: relayStylePagination(["keyword"]),
         },
       },
+      // アイテムはキーワードごとに別物として扱いたいため
+      // keyFields を無効化して Apollo の正規化キャッシュを避ける
       Item: {
         keyFields: false,
       },

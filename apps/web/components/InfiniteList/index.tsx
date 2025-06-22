@@ -12,6 +12,7 @@ export default function InfiniteList() {
     INFINITE_ITEMS_QUERY,
     {
       variables: { first: PAGE_SIZE, keyword: queryKeyword },
+      // 同じキーワードで再検索した際はキャッシュを優先して再利用する
       fetchPolicy: "cache-first",
       notifyOnNetworkStatusChange: true,
     },
@@ -20,6 +21,7 @@ export default function InfiniteList() {
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   const handleSearch = useCallback(() => {
+    // 検索文字列を更新するだけでキャッシュを保持する
     setQueryKeyword(keyword);
   }, [client, keyword]);
 
