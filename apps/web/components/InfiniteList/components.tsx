@@ -1,4 +1,4 @@
-export function InfinteListPresentation({ items }: { items: string[] }) {
+export function InfiniteListPresentation({ items }: { items: string[] }) {
   return (
     <ul>
       {items.map((text) => (

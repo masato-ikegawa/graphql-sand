@@ -1,12 +1,12 @@
 import { useQuery } from "@apollo/client";
 import { useCallback, useEffect, useRef } from "react";
-import { InfinteListPresentation } from "./components";
-import { INFINTE_ITEMS_QUERY } from "../../templates/infinteList";
+import { InfiniteListPresentation } from "./components";
+import { INFINITE_ITEMS_QUERY } from "../../templates/infiniteList";
 
 const PAGE_SIZE = 10;
 
-export default function InfinteList() {
-  const { data, loading, error, fetchMore } = useQuery(INFINTE_ITEMS_QUERY, {
+export default function InfiniteList() {
+  const { data, loading, error, fetchMore } = useQuery(INFINITE_ITEMS_QUERY, {
     variables: { first: PAGE_SIZE },
     notifyOnNetworkStatusChange: true,
   });
@@ -48,7 +48,7 @@ export default function InfinteList() {
 
   return (
     <div>
-      <InfinteListPresentation items={items} />
+      <InfiniteListPresentation items={items} />
       {loading && <div>Loading...</div>}
       <div ref={loadMoreRef} />
     </div>
