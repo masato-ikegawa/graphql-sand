@@ -56,13 +56,13 @@ export default function InfiniteList() {
     };
   }, [handleObserver]);
 
-  if (error) return <div>Error loading items</div>;
-
-  const items: DisplayItem[] = data?.items.edges.map((e: any) => e.node) ?? [];
-
   const handleClick = useCallback((id: string) => {
     setExpandedId((prev) => (prev === id ? undefined : id));
   }, []);
+
+  if (error) return <div>Error loading items</div>;
+
+  const items: DisplayItem[] = data?.items.edges.map((e: any) => e.node) ?? [];
 
   return (
     <div>
