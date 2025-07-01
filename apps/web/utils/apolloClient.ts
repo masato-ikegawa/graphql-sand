@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { relayStylePagination } from "@apollo/client/utilities";
 
 export const client = new ApolloClient({
@@ -10,8 +10,7 @@ export const client = new ApolloClient({
           items: relayStylePagination(["keyword"]),
         },
       },
-      // アイテムはキーワードごとに別物として扱いたいため
-      // keyFields を無効化して Apollo の正規化キャッシュを避ける
+      // avoid normalization
       Item: {
         keyFields: false,
       },
